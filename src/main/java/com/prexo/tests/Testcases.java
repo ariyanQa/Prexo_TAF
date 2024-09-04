@@ -34,41 +34,37 @@ public class Testcases extends BaseTest {
 	
 	@Test(priority = 2)
     public void verifyChrome() {
-		String filename = "chrome_"+getClass().getDeclaredMethods()[0].getName();
 		driver = DriverManager.getDriver("chrome");
         driver.get(Config.get("baseUrl2"));
         XmlSiteMapPage xp = new XmlSiteMapPage(driver);
         List<String> urls = xp.getUrls();
-        xp.launchUrls(urls,"Chrome",filename);
+        xp.launchUrls(urls,"Chrome");
 	}
 	
 	@Test(priority = 3)
     public void verifyFireFox() {
-		String filename = "ff_"+getClass().getDeclaredMethods()[0].getName();
 		driver = DriverManager.getDriver("firefox");
         driver.get(Config.get("baseUrl2"));
         XmlSiteMapPage xp = new XmlSiteMapPage(driver);
         List<String> urls = xp.getUrls();
-        xp.launchUrls(urls,"Firefox",filename);
+        xp.launchUrls(urls,"Firefox");
 	}
 	
 	@Test(enabled=false)
     public void verifySafari() {
-		String filename = "safari_"+ getClass().getDeclaredMethods()[0].getName();
 		driver = DriverManager.getDriver("safari");
         driver.get(Config.get("baseUrl2"));
        XmlSiteMapPage xp = new XmlSiteMapPage(driver);
         List<String> urls = xp.getUrls();
-        xp.launchUrls(urls,"safari",filename);
+        xp.launchUrls(urls,"safari");
 	}
 	
 	@Test(priority = 4)
     public void verifyEdge() {
-		String filename = "edge_"+ getClass().getDeclaredMethods()[0].getName();
 		driver = DriverManager.getDriver("edge");
         driver.get(Config.get("baseUrl2"));
        XmlSiteMapPage xp = new XmlSiteMapPage(driver);
         List<String> urls = xp.getUrls();
-        xp.launchUrls(urls,"edge",filename);
+        xp.launchUrls(urls,"edge");
 	}
 }

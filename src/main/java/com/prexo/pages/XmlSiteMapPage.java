@@ -33,13 +33,13 @@ public class XmlSiteMapPage {
         return urls;
     }
     
-    public void launchUrls(List<String> urls,String folder,String filename) {
+    public void launchUrls(List<String> urls,String folder) {
     	for(int i=0;i<=urls.size();i++) {
     		if(i<=4) {
     			WebDriverUtil.launchUrl(driver, urls.get(i));
     			WebDriverUtil.waitForElementToBeVisible(driver, pageBody);
     			WebDriverUtil.passedTestSteps(driver, urls.get(i), true);
-    			ScreenshotUtil.getScreenshot(driver,folder, folder+"_"+filename+"_URL"+i);
+    			ScreenshotUtil.getScreenshot(driver,folder, folder+"_URL"+i);
     		} else {
     			break;
     		}
