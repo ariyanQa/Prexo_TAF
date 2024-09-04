@@ -3,6 +3,7 @@ package com.prexo.utility;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -27,6 +28,10 @@ public class DriverManager {
             case "safari":
             	WebDriverManager.safaridriver().setup();
             	driver = new SafariDriver();
+                break;
+            case "edge":
+            	WebDriverManager.edgedriver().setup();
+            	driver = new EdgeDriver();
                 break;
             default:
                 throw new IllegalArgumentException("Browser not supported: " + browser + ". Supported browsers: firefox, chrome, safari");

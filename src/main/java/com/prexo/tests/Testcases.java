@@ -12,29 +12,29 @@ import com.prexo.utility.DriverManager;
 import com.prexo.utility.ScreenshotUtil;
 
 public class Testcases extends BaseTest {
-//	@Test
-//    public void verifyUploadedFile() {
-//		driver = DriverManager.getDriver("chrome");
-//        driver.get(Config.get("baseUrl1"));
-//        PrexoPage loginPage = new PrexoPage(driver);
-//        loginPage.enterUsername("prexo.mis@dealsdray.com");
-//        loginPage.enterPassword("prexo.mis@dealsdray.com");
-//        loginPage.clickSubmit();
-//        loginPage.clickOrder();
-//        loginPage.clickOrders();
-//        loginPage.clickAddBulk();
-//        loginPage.uploadFile();
-//        loginPage.clickImport();
-//        loginPage.clickValidate();
-//        loginPage.acceptAlert();
-//        loginPage.clickSubmitButton();
-//        loginPage.acceptAlert();
-//        ScreenshotUtil.captureScreenshot(driver);
-//    }
-//	
+	@Test(priority = 1)
+    public void verifyUploadedFile() {
+		driver = DriverManager.getDriver("chrome");
+        driver.get(Config.get("baseUrl1"));
+        PrexoPage loginPage = new PrexoPage(driver);
+        loginPage.enterUsername("prexo.mis@dealsdray.com");
+        loginPage.enterPassword("prexo.mis@dealsdray.com");
+        loginPage.clickSubmit();
+        loginPage.clickOrder();
+        loginPage.clickOrders();
+        loginPage.clickAddBulk();
+        loginPage.uploadFile();
+        loginPage.clickImport();
+        loginPage.clickValidate();
+        loginPage.acceptAlert();
+        loginPage.clickSubmitButton();
+        loginPage.acceptAlert();
+        ScreenshotUtil.captureScreenshot(driver);
+    }
+	
 	@Test(priority = 2)
     public void verifyChrome() {
-		String filename = getClass().getDeclaredMethods()[0].getName();
+		String filename = "chrome_"+getClass().getDeclaredMethods()[0].getName();
 		driver = DriverManager.getDriver("chrome");
         driver.get(Config.get("baseUrl2"));
         XmlSiteMapPage xp = new XmlSiteMapPage(driver);
@@ -44,7 +44,7 @@ public class Testcases extends BaseTest {
 	
 	@Test(priority = 3)
     public void verifyFireFox() {
-		String filename = getClass().getDeclaredMethods()[0].getName();
+		String filename = "ff_"+getClass().getDeclaredMethods()[0].getName();
 		driver = DriverManager.getDriver("firefox");
         driver.get(Config.get("baseUrl2"));
         XmlSiteMapPage xp = new XmlSiteMapPage(driver);
@@ -52,13 +52,23 @@ public class Testcases extends BaseTest {
         xp.launchUrls(urls,"Firefox",filename);
 	}
 	
-//	@Test(priority = 4)
-//    public void verifySafari() {
-//		String filename = "Safari_"+ getClass().getDeclaredMethods()[0].getName();
-//		driver = DriverManager.getDriver("safari");
-//        driver.get(Config.get("baseUrl2"));
-//        XmlSiteMapPage xp = new XmlSiteMapPage(driver);
-//        List<String> urls = xp.getUrls();
-//        xp.launchUrls(urls,"Safari",filename);
-//	}
+	@Test(enabled=false)
+    public void verifySafari() {
+		String filename = "safari_"+ getClass().getDeclaredMethods()[0].getName();
+		driver = DriverManager.getDriver("safari");
+        driver.get(Config.get("baseUrl2"));
+       XmlSiteMapPage xp = new XmlSiteMapPage(driver);
+        List<String> urls = xp.getUrls();
+        xp.launchUrls(urls,"safari",filename);
+	}
+	
+	@Test(priority = 4)
+    public void verifyEdge() {
+		String filename = "edge_"+ getClass().getDeclaredMethods()[0].getName();
+		driver = DriverManager.getDriver("edge");
+        driver.get(Config.get("baseUrl2"));
+       XmlSiteMapPage xp = new XmlSiteMapPage(driver);
+        List<String> urls = xp.getUrls();
+        xp.launchUrls(urls,"edge",filename);
+	}
 }
