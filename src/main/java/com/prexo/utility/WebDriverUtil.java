@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
 
@@ -61,8 +62,7 @@ public class WebDriverUtil {
     public static void passedTestSteps(WebDriver driver,String step,boolean screenshotFlag) {
     	if(screenshotFlag) {
     		String base64Screenshot = ScreenshotUtil.captureScreenshot(driver);
-        	ExtentManager.getTest().log(Status.PASS, step)
-            .addScreenCaptureFromBase64String(base64Screenshot);
+        	ExtentManager.getTest().log(Status.PASS, step,MediaEntityBuilder.createScreenCaptureFromBase64String(base64Screenshot).build());
     	} else {
     		ExtentManager.getTest().log(Status.PASS, step);
     	}
@@ -72,8 +72,9 @@ public class WebDriverUtil {
     public static void failedTestSteps(WebDriver driver,String step,boolean screenshotFlag) {
     	if(screenshotFlag) {
     		String base64Screenshot = ScreenshotUtil.captureScreenshot(driver);
-        	ExtentManager.getTest().log(Status.FAIL, step)
-            .addScreenCaptureFromBase64String(base64Screenshot);
+    		);
+
+        	ExtentManager.getTest().log(Status.FAIL, step,MediaEntityBuilder.createScreenCaptureFromBase64String(base64Screenshot).build());
     	} else {
     		ExtentManager.getTest().log(Status.FAIL, step);
     	}
